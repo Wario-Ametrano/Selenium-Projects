@@ -19,23 +19,22 @@ driver = Chrome(service=Service(chrome_driver))
 driver.maximize_window()
 driver.get(CANDY_LINK)
 
-sleep(2) #Attende 2 secondi per assicurarsi che la pagina sia completamente caricata prima di interagire con gli elementi
+wait = WebDriverWait(driver, 10)
+
 # Trova l'elemento
 btn = driver.find_element(By.XPATH, "//*[text()='FIND MY CANDY!']")
 # CLICCA "DIETRO" IL BANNER (via JavaScript)
 driver.execute_script("arguments[0].click();", btn)
-sleep(2) 
 driver.find_element(By.ID, "popup-widget540-cta").click() #Accetta i cookie
-
-
-
-
-
-
-
-
-
-
+   
+driver.find_element(By.XPATH, "//*[@data-ux='ListItemInline']//a[contains(text(),'Halloween Party')]").click() #Clicca su "Halloween Party" tramite data-ux
+sleep(1)
+driver.find_element(By.CSS_SELECTOR, "a[href='/host-a-party-1']").click() #Clicca su "Hosting a Party" tramite CSS Selector
+sleep(1)
+driver.find_element(By.XPATH, "//a[contains(text(),'Zombies')]").click() #Clicca su "Halloween Party" tramite data-ux
+sleep(1)
+driver.execute_script("window.scrollBy(0, 500);") #Scrolla di 500 pixel verso il basso per visualizzare più prodotti
+driver.find_element(By.XPATH,"//a[contains(text(),'Find out more')]").click()
 
 
 input() #Mantiene la finestra aperta finché non viene premuto invio
