@@ -1,16 +1,14 @@
-import os
+import os 
+from time import sleep # Importa il modulo os per gestire le variabili d'ambiente
 
 # Disabilita la verifica SSL per webdriver-manager
 os.environ["WDM_SSL_VERIFY"] = "0"
-
-from time import sleep
 
 from selenium.webdriver import Chrome
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 CANDY_LINK = "https://candymapper.com/"
 
